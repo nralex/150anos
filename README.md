@@ -167,14 +167,6 @@ Antes de confirmar qualquer transferência:
 
 ---
 
-# 🌐 Publicação no GitHub Pages
-
-## 1. Criar o repositório
-
-Envie os arquivos do projeto para um novo repositório no GitHub.
-
----
-
 # 🧩 Favicon
 
 Arquivo recomendado:
