@@ -1,10 +1,11 @@
+
 # ✨ 150 anos da construção da Matriz
 
 ### Landing Page Oficial — Diocese de São Raimundo Nonato
 
 <p align="center">
 
-Landing page comemorativa desenvolvida para celebrar os <strong>150 anos da construção da Igreja Matriz de São Raimundo Nonato</strong> <em>1876 — 2026</em>
+Landing page comemorativa desenvolvida para celebrar os `<strong>`150 anos da construção da Igreja Matriz de São Raimundo Nonato`</strong>` `<em>`1876 — 2026`</em>`
 
 São Raimundo Nonato — Piauí — Brasil
 
@@ -30,11 +31,11 @@ A proposta visual busca transmitir:
 
 A interface utiliza como base as cores oficiais da campanha jubilar:
 
-| Elemento          | Cor       |
-| ----------------- | --------- |
+| Elemento           | Cor         |
+| ------------------ | ----------- |
 | Vermelho Mártir   | `#B80D0D` |
 | Dourado Litúrgico | `#F0C93D` |
-| Fundo Claro       | `#FFFDF8` |
+| Fundo Claro        | `#FFFDF8` |
 
 ---
 
@@ -88,7 +89,6 @@ A interface utiliza como base as cores oficiais da campanha jubilar:
 ```
 
 2. Adicione as imagens desejadas.
-
 3. Procure no `index.html` por:
 
 ```html
@@ -101,13 +101,13 @@ src="./assets/"
 
 ## 📏 Recomendações de tamanho
 
-| Imagem         | Tamanho recomendado          |
-| -------------- | ---------------------------- |
-| hero.jpg       | 1800 × 1200 px               |
-| hero-card      | 700 × 800 px                 |
-| historia.jpg   | 900 × 1100 px                |
+| Imagem         | Tamanho recomendado            |
+| -------------- | ------------------------------ |
+| hero.jpg       | 1800 × 1200 px                |
+| hero-card      | 700 × 800 px                  |
+| historia.jpg   | 900 × 1100 px                 |
 | galeria        | 700 × 560 px ou 700 × 900 px |
-| qrcode-pix.png | 380 × 380 px                 |
+| qrcode-pix.png | 380 × 380 px                  |
 
 ---
 
@@ -143,14 +143,14 @@ Os comentários no código indicam claramente:
 
 ## PIX Oficial
 
-| Informação | Dados                          |
-| ---------- | ------------------------------ |
-| Chave PIX  | `89 98122-0313`                |
-| Banco      | Banco do Brasil                |
-| Agência    | 2660-3                         |
-| Conta      | 71500-0                        |
-| CNPJ       | 06.822.142/0003-82             |
-| Favorecido | Diocese de São Raimundo Nonato |
+| Informação | Dados                           |
+| ------------ | ------------------------------- |
+| Chave PIX    | `89 98122-0313`               |
+| Banco        | Banco do Brasil                 |
+| Agência     | 2660-3                          |
+| Conta        | 71500-0                         |
+| CNPJ         | 06.822.142/0003-82              |
+| Favorecido   | Diocese de São Raimundo Nonato |
 
 ---
 
