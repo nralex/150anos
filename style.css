@@ -1,0 +1,829 @@
+/* ════════════════════════════════════════════════════════
+   STYLE.CSS · Matriz de São Raimundo Nonato — 150 anos
+   ════════════════════════════════════════════════════════
+
+   ÍNDICE
+   ──────
+   1.  Variáveis (paleta, tipografia, espaçamentos)
+   2.  Reset e base
+   3.  Utilitários (container, labels, botões)
+   4.  Animações e scroll reveal
+   5.  Cabeçalho e navegação
+   6.  Hero
+   7.  Seções — estrutura geral
+   8.  Seção História
+   9.  Seção Eventos
+   10. Seção PIX
+   11. Seção Galeria
+   12. Rodapé
+   13. Responsivo
+
+   QUANDO MEXER AQUI?
+   ──────────────────
+   • Mudança de COR: altere apenas as variáveis em :root
+   • Mudança de TEXTO ou CONTEÚDO: edite o index.html
+   • Mudança de COMPORTAMENTO (copiar PIX, menu): edite script.js
+   • Ajustes de espaçamento e layout: seções numeradas acima
+
+════════════════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────────────────────
+   1. VARIÁVEIS
+   Toda a identidade visual concentrada aqui.
+   Mude a cor de uma seção inteira alterando uma linha.
+───────────────────────────────────────────────────── */
+:root {
+  /* Paleta principal — identidade dos 150 anos */
+  --vermelho:        #C41E3A;
+  --vermelho-escuro: #96162e;
+  --vermelho-claro:  rgba(196, 30, 58, 0.08);
+  --dourado:         #F4C430;
+  --dourado-escuro:  #c9952a;
+  --dourado-suave:   rgba(244, 196, 48, 0.15);
+
+  /* Neutros */
+  --fundo:           #FFFDF7;
+  --fundo-alt:       #F7F0E3;
+  --surface:         #FFFFFF;
+  --texto:           #2A2A2A;
+  --texto-suave:     #666666;
+  --borda:           #E8E0D1;
+
+  /* Sombras */
+  --sombra-sm:  0 4px 12px rgba(0,0,0,0.05);
+  --sombra-md:  0 10px 30px rgba(0,0,0,0.08);
+  --sombra-lg:  0 20px 50px rgba(0,0,0,0.10);
+
+  /* Tipografia */
+  --fonte-titulo: 'Cormorant Garamond', Georgia, serif;
+  --fonte-corpo:  'Inter', system-ui, sans-serif;
+
+  /* Geometria */
+  --container: 1180px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+
+  /* Animações */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 0.25s;
+  --dur-base: 0.45s;
+  --dur-slow: 0.7s;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   2. RESET E BASE
+───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Evita pulo de layout quando a scrollbar aparece */
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+  line-height: 1.7;
+  background: var(--fundo);
+  color: var(--texto);
+  /* Suaviza rendering de fontes no macOS/iOS */
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--fonte-titulo);
+  line-height: 1.1;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   3. UTILITÁRIOS
+───────────────────────────────────────────────────── */
+
+/* Largura máxima centrada */
+.container {
+  width: 90%;
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+/* Label acima de títulos de seção */
+.section-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vermelho);
+  margin-bottom: 0.5rem;
+}
+
+/* Cabeçalho de seção (label + título + subtítulo) */
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  color: var(--texto);
+  margin-bottom: 0.75rem;
+}
+
+.section-sub {
+  color: var(--texto-suave);
+  font-size: 1.05rem;
+}
+
+/* Botões — base compartilhada */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 999px;
+  border: none;
+  font-family: var(--fonte-corpo);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease),
+    box-shadow var(--dur-fast) var(--ease);
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Botão preenchido vermelho */
+.btn-primary {
+  background: var(--vermelho);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(196,30,58,0.28);
+}
+.btn-primary:hover {
+  background: var(--vermelho-escuro);
+  box-shadow: 0 6px 22px rgba(196,30,58,0.38);
+}
+
+/* Botão contornado */
+.btn-outline {
+  background: transparent;
+  color: var(--texto);
+  box-shadow: inset 0 0 0 1.5px var(--dourado);
+}
+.btn-outline:hover {
+  background: var(--dourado-suave);
+}
+
+
+/* ─────────────────────────────────────────────────────
+   4. ANIMAÇÕES E SCROLL REVEAL
+   As classes .fade-up e .reveal são aplicadas
+   no HTML; o JavaScript em script.js ativa a classe
+   .visible quando o elemento entra na tela.
+   Prefixo delay-N controla o escalonamento.
+───────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGold {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* Elementos que animam ao carregar a página (hero) */
+.fade-up {
+  opacity: 0;
+  animation: fadeUp var(--dur-slow) var(--ease) forwards;
+}
+
+/* Elementos que animam ao entrar na tela via scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity var(--dur-slow) var(--ease),
+    transform var(--dur-slow) var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Atrasos escalonados para listas de cards */
+.delay-1 { animation-delay: 0.15s; transition-delay: 0.15s; }
+.delay-2 { animation-delay: 0.30s; transition-delay: 0.30s; }
+.delay-3 { animation-delay: 0.45s; transition-delay: 0.45s; }
+.delay-4 { animation-delay: 0.60s; transition-delay: 0.60s; }
+.delay-5 { animation-delay: 0.75s; transition-delay: 0.75s; }
+
+
+/* ─────────────────────────────────────────────────────
+   5. CABEÇALHO E NAVEGAÇÃO
+───────────────────────────────────────────────────── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 253, 247, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--borda);
+  transition: box-shadow var(--dur-fast);
+}
+
+/* Sombra adicionada via JS quando a página é rolada */
+.header.scrolled {
+  box-shadow: var(--sombra-sm);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 70px;
+}
+
+/* Marca / logo textual */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.brand-numero {
+  font-family: var(--fonte-titulo);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--vermelho);
+  line-height: 1;
+  /* Animação sutil de brilho no número */
+  transition: color var(--dur-fast);
+}
+.brand:hover .brand-numero {
+  color: var(--vermelho-escuro);
+}
+
+.brand-info {
+  display: flex;
+  flex-direction: column;
+}
+.brand-info strong {
+  font-family: var(--fonte-titulo);
+  font-size: 0.95rem;
+  color: var(--texto);
+  line-height: 1.2;
+}
+.brand-info small {
+  font-size: 0.78rem;
+  color: var(--texto-suave);
+}
+
+/* Menu principal — desktop */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.nav a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--texto-suave);
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--dur-fast);
+}
+/* Linha decorativa sob o link ao hover */
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--vermelho);
+  transition: width var(--dur-base) var(--ease);
+}
+.nav a:hover {
+  color: var(--vermelho);
+}
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* Hamburguer — mobile (oculto por padrão) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--texto);
+  border-radius: 2px;
+  transition: transform var(--dur-fast), opacity var(--dur-fast);
+}
+
+/* Estado aberto do hamburguer */
+.menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+
+/* ─────────────────────────────────────────────────────
+   6. HERO
+───────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 100px 0 60px;
+}
+
+/* Fundo decorativo com gradiente em camadas */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 80% 30%, rgba(244,196,48,0.12), transparent),
+    radial-gradient(ellipse 60% 70% at 10% 80%, rgba(196,30,58,0.07), transparent),
+    var(--fundo);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+/* Badge sutil acima do título */
+.hero-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  border: 1px solid rgba(196,30,58,0.2);
+  background: var(--vermelho-claro);
+  border-radius: 999px;
+  color: var(--vermelho);
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.hero-titulo {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  color: var(--vermelho);
+  margin-bottom: 0.5rem;
+}
+
+.hero-periodo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 600;
+  color: var(--dourado-escuro);
+  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+  /* Pulso sutil no período */
+  animation: pulseGold 4s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.hero-subtitulo {
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: var(--texto-suave);
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Seta de scroll com animação de bounce */
+.scroll-hint {
+  margin-top: 3.5rem;
+}
+.scroll-arrow {
+  font-size: 1.3rem;
+  color: var(--texto-suave);
+  display: inline-block;
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   7. SEÇÕES — ESTRUTURA GERAL
+───────────────────────────────────────────────────── */
+.section {
+  padding: clamp(4rem, 8vw, 6rem) 0;
+}
+
+/* Seções com fundo alternado */
+.section-alt {
+  background: var(--fundo-alt);
+}
+
+
+/* ─────────────────────────────────────────────────────
+   8. SEÇÃO HISTÓRIA
+───────────────────────────────────────────────────── */
+.historia-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.historia-texto p {
+  color: var(--texto-suave);
+  font-size: 1.05rem;
+}
+
+/* Destaques numéricos (3 colunas) */
+.historia-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--borda);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-num {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--vermelho);
+  line-height: 1;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+  margin-top: 0.3rem;
+}
+
+.historia-figura img {
+  border-radius: var(--radius-md);
+  box-shadow: var(--sombra-lg);
+  border: 1px solid var(--borda);
+  width: 100%;
+  /* Leve elevação ao hover */
+  transition: transform var(--dur-slow) var(--ease), box-shadow var(--dur-slow) var(--ease);
+}
+.historia-figura:hover img {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.12);
+}
+
+
+/* ─────────────────────────────────────────────────────
+   9. SEÇÃO EVENTOS
+───────────────────────────────────────────────────── */
+.eventos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.evento-card {
+  background: var(--surface);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--sombra-sm);
+  transition:
+    transform var(--dur-base) var(--ease),
+    box-shadow var(--dur-base) var(--ease);
+}
+.evento-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sombra-lg);
+}
+
+/* Área da imagem do evento */
+.evento-thumb {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.evento-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease);
+}
+.evento-card:hover .evento-thumb img {
+  transform: scale(1.05);
+}
+
+/* Tag flutuante sobre a imagem */
+.evento-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--vermelho);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.tag-esporte { background: var(--dourado-escuro); }
+.tag-cultura { background: #5a4030; }
+
+/* Conteúdo do card */
+.evento-body {
+  padding: 1.5rem;
+}
+
+.evento-data {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.evento-body h3 {
+  font-size: 1.8rem;
+  color: var(--vermelho);
+  margin-bottom: 0.6rem;
+}
+
+.evento-body p {
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+}
+
+.evento-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vermelho);
+  transition: gap var(--dur-fast);
+}
+.evento-link:hover {
+  text-decoration: underline;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   10. SEÇÃO PIX
+───────────────────────────────────────────────────── */
+.pix-section {
+  /* Gradiente suave de fundo para destacar a seção */
+  background: linear-gradient(135deg, rgba(196,30,58,0.04) 0%, rgba(244,196,48,0.06) 100%), var(--fundo);
+}
+
+.pix-card {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: var(--sombra-md);
+}
+
+/* Ícone decorativo dourado */
+.pix-icone {
+  font-size: 2.2rem;
+  color: var(--dourado-escuro);
+  margin-bottom: 1rem;
+  animation: pulseGold 3s ease-in-out infinite;
+}
+
+.pix-instrucao {
+  color: var(--texto-suave);
+  margin-bottom: 1.25rem;
+}
+
+/* Caixa que exibe a chave PIX */
+.pix-chave-wrapper {
+  display: block;
+  padding: 1.1rem 1.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--fundo-alt);
+  border: 1.5px dashed var(--dourado);
+  font-size: 1rem;
+  font-weight: 500;
+  word-break: break-all;
+  /* Permite que o usuário selecione o texto manualmente */
+  user-select: all;
+  cursor: text;
+  margin-bottom: 1.5rem;
+}
+
+/* Mensagem de retorno após copiar */
+.pix-feedback {
+  min-height: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--vermelho);
+  margin-top: 0.75rem;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   11. SEÇÃO GALERIA
+───────────────────────────────────────────────────── */
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.galeria-item {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--sombra-sm);
+  transition:
+    transform var(--dur-base) var(--ease),
+    box-shadow var(--dur-base) var(--ease);
+}
+.galeria-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-md);
+}
+
+/* Área da imagem — altura fixa para alinhamento */
+.galeria-item img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease);
+}
+.galeria-item:hover img {
+  transform: scale(1.04);
+}
+
+figcaption {
+  padding: 0.9rem 1rem;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  border-top: 1px solid var(--borda);
+}
+
+
+/* ─────────────────────────────────────────────────────
+   12. RODAPÉ
+───────────────────────────────────────────────────── */
+.footer {
+  background: var(--vermelho);
+  color: rgba(255,255,255,0.88);
+  padding: 4rem 0 2rem;
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.footer-col h4 {
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--dourado);
+  margin-bottom: 1rem;
+}
+
+.footer-col p {
+  font-size: 0.92rem;
+  margin-bottom: 0.4rem;
+}
+
+.footer-link {
+  display: inline-block;
+  color: rgba(255,255,255,0.88);
+  font-size: 0.92rem;
+  font-weight: 500;
+  transition: color var(--dur-fast);
+}
+.footer-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+
+
+/* ─────────────────────────────────────────────────────
+   13. RESPONSIVO
+   Apenas ajustes de grid e visibilidade.
+   Nenhum conteúdo ou texto é alterado aqui.
+───────────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-inner { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 860px) {
+  .historia-grid,
+  .eventos-grid { grid-template-columns: 1fr; }
+
+  .historia-figura { order: -1; }
+
+  .historia-stats { grid-template-columns: repeat(3, 1fr); }
+
+  .menu-toggle { display: flex; }
+
+  /* Menu mobile — oculto até ser aberto pelo JS */
+  .nav {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(255,253,247,0.97);
+    backdrop-filter: blur(14px);
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--borda);
+    box-shadow: var(--sombra-md);
+    gap: 1.2rem;
+  }
+  /* Classe .open adicionada por script.js ao clicar no hamburguer */
+  .nav.open { display: flex; }
+}
+
+@media (max-width: 580px) {
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions .btn { width: 100%; max-width: 320px; }
+  .galeria-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .historia-stats { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .pix-card { padding: 2rem 1.5rem; }
+}
