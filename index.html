@@ -456,6 +456,52 @@
     }
     footer p, footer a { color:rgba(255,255,255,.88); line-height:1.9; }
     footer a:hover { color:white; text-decoration:underline; }
+
+    .footer-grid div {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .schedule-list {
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:10px;
+    }
+    .schedule-list li {
+      position:relative;
+      padding-left:1.2rem;
+      color:rgba(255,255,255,.88);
+    }
+    .schedule-list li::before {
+      content:'•';
+      position:absolute;
+      left:0; top:0.1rem;
+      color:var(--dourado);
+      font-size:1rem;
+      line-height:1;
+    }
+    .footer-grid a {
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .footer-grid .icon-whatsapp,
+    .footer-grid .icon-instagram {
+      display:inline-block;
+      width:30px;
+      height:30px;
+      vertical-align:middle;
+      margin-right:8px;
+      background-color: var(--dourado);
+      -webkit-mask-size:contain;
+      mask-size:contain;
+      -webkit-mask-repeat:no-repeat;
+      mask-repeat:no-repeat;
+      -webkit-mask-position:center;
+      mask-position:center;
+    }
     .footer-bottom {
       margin-top:50px; padding-top:24px;
       border-top:1px solid rgba(255,255,255,.12);
@@ -817,14 +863,14 @@
         <div>
           <h4>Matriz</h4>
           <!-- Nome oficial -->
-          <p>Igreja Matriz de São Raimundo Nonato</p>
+          <p>Catedral de São Raimundo Nonato</p>
           <p>Diocese de São Raimundo Nonato</p>
         </div>
 
         <div>
           <h4>Endereço</h4>
           <!-- Substitua pelo endereço real -->
-          <p>Praça da Matriz, s/n<br>São Raimundo Nonato — PI</p>
+          <p>Praça Cmte. Piauílino, São Raimundo Nonato - PI, 64770-000</p>
         </div>
 
         <div>
@@ -833,28 +879,56 @@
           TELEFONE E E-MAIL
           Substitua pelos dados reais.
           -->
-          <p>(89) 0000-0000</p>
-          <p>secretaria@matriz.org.br</p>
+          <span class="icon-whatsapp" aria-hidden="true" title="Whatsapp"
+            style="
+              display:inline-block;
+              width:30px;height:25px;
+              vertical-align:middle;margin-right:8px;
+              background-color: var(--icon-color, #F0C93D);
+              -webkit-mask: url('assets/whatsapp-logo-variant-svgrepo-com.svg') no-repeat center / contain;
+              mask: url('assets/whatsapp-logo-variant-svgrepo-com.svg') no-repeat center / contain;
+            ">
+          </span>
+          <a href="https://l.instagram.com/?u=https%3A%2F%2Fwa.me%2F5501589981220313%3Futm_source%3Dig%26utm_medium%3Dsocial%26utm_content%3Dlink_in_bio%26fbclid%3DPAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGn0X3jVF-1FDyAexYXONtCggS_PqHKmO_jxRiGsqK490BzfhNZFGzSqPuxm8o_aem_6CR0WSL54g3YxajRgk6kzA&e=AUDeG6v1GL1vJ6XalsToh9Q3WI40ueO_b7sc465PNRM-NIoqbJSbumfZd8ompyVBdSAIgsPDkxywhIuZbPaFayydrOn5eLuwsMzxfh6rYmlZ0Z6ImRz6yxWkjVnOANP9wTaZ2peA8LYPqISqE-oIfjI" target="_blank" rel="noopener noreferrer">(89) 98122-0313</a>
         </div>
 
         <div>
-          <h4>Horários e Redes</h4>
-          <p>Secretaria Paroquial</p>
-          <p>Seg a Sex · 08h–12h / 14h–18h</p>
-          <br>
+          <h4>Secretaria Paroquial</h4>
+          <p>Seg a Sex · 08h–12h / 14h–17h</p>
+
+          <h4>Missas</h4>
+          <ul class="schedule-list">
+            <li>Seg a Sex · 19h30</li>
+            <li>Sábados · 19h30</li>
+            <li>Domingos · 07h, 09h, 19h30</li>
+          </ul>
+
           <!--
           INSTAGRAM
           Substitua o href e o texto pelo perfil real.
           -->
-          <a href="https://instagram.com/matriz_sao_raimundo" target="_blank" rel="noopener noreferrer">
-            📷 @matriz_sao_raimundo
+          <h4>Redes Sociais</h4>
+          <!-- logo do Instagram: use máscara para permitir cor em hexadecimal via variável CSS -->
+          <!-- Ajuste a cor alterando --icon-color (ex: #DAA520 ou #FFFFFF) -->
+          <span class="icon-instagram" aria-hidden="true" title="Instagram"
+            style="
+              display:inline-block;
+              width:30px;height:30px;
+              vertical-align:middle;margin-right:8px;
+              background-color: var(--icon-color, #F0C93D);
+              -webkit-mask: url('assets/instagram-logo-facebook-2-svgrepo-com.svg') no-repeat center / contain;
+              mask: url('assets/instagram-logo-facebook-2-svgrepo-com.svg') no-repeat center / contain;
+            ">
+          </span>
+          <a href="https://www.instagram.com/matrizsrn.150anos/" target="_blank" rel="noopener noreferrer">
+            @matrizsrn.150anos
           </a>
         </div>
 
       </div>
 
       <div class="footer-bottom">
-        © 2026 — Diocese de São Raimundo Nonato · 150 anos da construção da Matriz
+        © 2026 — Catedral de São Raimundo Nonato · 150 anos da construção da Matriz
       </div>
 
     </div>
